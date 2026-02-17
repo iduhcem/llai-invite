@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LLAI Launch Invitation — Nexops Innovations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #002E6C;
+      --azure:     #2F80ED;
+      --white:     #ffffff;
+      --off-white: #F7F8FA;
+      --rule:      #D4DBE8;
+      --text:      #1A2436;
+      --muted:     #6B7A94;
+      --light-bg:  #EEF2F9;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--off-white);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* ── OUTER FRAME ── */
+    .frame {
+      max-width: 860px;
+      margin: 3rem auto;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      box-shadow: 0 4px 40px rgba(0,46,108,0.08), 0 1px 4px rgba(0,46,108,0.06);
+      opacity: 0;
+      animation: appear 0.7s ease 0.1s forwards;
+    }
+
+    /* ── NAVY HEADER ── */
+    .header {
+      background: var(--navy);
+      padding: 2.6rem 3.5rem 2.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--azure);
+    }
+
+    /* Logo */
+    .logo-wrap { display: flex; align-items: center; gap: 0.85rem; }
+
+    .logo-icon { width: 34px; height: 34px; flex-shrink: 0; }
+
+    .logo-text { display: flex; flex-direction: column; }
+
+    .logo-wordmark {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      color: white;
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.42rem;
+      letter-spacing: 0.5em;
+      color: rgba(255,255,255,0.45);
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .invite-stamp {
+      text-align: right;
+    }
+
+    .invite-stamp-label {
+      font-size: 0.5rem;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .invite-stamp-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--azure);
+      text-transform: uppercase;
+      border: 1px solid rgba(47,128,237,0.45);
+      padding: 0.35rem 0.8rem;
+      display: inline-block;
+    }
+
+    /* ── HERO BAND ── */
+    .hero {
+      padding: 4rem 3.5rem 3.5rem;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.38em;
+      color: var(--azure);
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .rule-short {
+      width: 36px;
+      height: 1px;
+      background: var(--rule);
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 14vw, 8.5rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.15em;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 1.4rem auto 0;
+    }
+
+    /* ── HORIZONTAL RULE WITH DIAMOND ── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 3.5rem;
+      padding: 0;
+    }
+
+    .ornament-line {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .ornament-diamond {
+      width: 7px;
+      height: 7px;
+      background: var(--navy);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── EVENT DETAILS GRID ── */
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .detail-cell {
+      padding: 2.2rem 3.5rem;
+      border-right: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    .detail-cell:last-child { border-right: none; }
+
+    .detail-label {
+      font-size: 0.52rem;
+      letter-spacing: 0.3em;
+      color: var(--azure);
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+      font-weight: 500;
+    }
+
+    .detail-primary {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+
+    .detail-secondary {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* ── BODY COPY ── */
+    .body-copy {
+      padding: 3rem 3.5rem;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    .body-copy p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .body-copy strong {
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* ── RSVP ── */
+    .rsvp {
+      background: var(--light-bg);
+      padding: 2.8rem 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .rsvp-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .rsvp-subheading {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .rsvp-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .rsvp-form input {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      padding: 0.85rem 1.1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .rsvp-form input::placeholder { color: #B0BAC9; }
+
+    .rsvp-form input:focus {
+      border-color: var(--navy);
+    }
+
+    /* plus one */
+    .plus-one-row {
+      grid-column: span 2;
+      display: flex;
+      align-items: center;
+    }
+
+    .plus-one-label {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+      letter-spacing: 0.02em;
+    }
+
+    .plus-one-label em {
+      font-style: normal;
+      color: var(--azure);
+      font-weight: 500;
+    }
+
+    .plus-one-label input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkbox-custom {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--rule);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .plus-one-label input[type="checkbox"]:checked + .checkbox-custom {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .plus-one-label input[type="checkbox"]:checked + .checkbox-custom::after {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 7px;
+      border: 1.5px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+    }
+
+    .plus-one-field {
+      grid-column: span 2;
+      display: none;
+      animation: slideDown 0.25s ease forwards;
+    }
+
+    .plus-one-field.visible {
+      display: block;
+    }
+
+    .plus-one-field input {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      padding: 0.85rem 1.1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .plus-one-field input::placeholder { color: #B0BAC9; }
+    .plus-one-field input:focus { border-color: var(--navy); }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .rsvp-btn {
+      grid-column: span 2;
+      background: var(--navy);
+      color: white;
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .rsvp-btn:hover { background: #003d8f; }
+    .rsvp-btn:active { transform: translateY(1px); }
+
+    /* success */
+    #rsvpSuccess {
+      display: none;
+      max-width: 540px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 1.8rem;
+      border: 1px solid var(--rule);
+      background: white;
+    }
+
+    .success-check {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--navy);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+
+    #rsvpSuccess strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    #rsvpSuccess span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.6rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-l {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .footer-r {
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    .footer-r a {
+      color: var(--azure);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* ── NAVY FOOTER BAND ── */
+    .footer-band {
+      background: var(--navy);
+      padding: 0.5rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-band-text {
+      font-size: 0.5rem;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .frame { margin: 0; box-shadow: none; border: none; }
+      .header { padding: 1.8rem 1.6rem; flex-direction: column; gap: 1.2rem; align-items: flex-start; }
+      .hero { padding: 2.8rem 1.6rem 2.5rem; }
+      .ornament { margin: 0 1.6rem; }
+      .details { grid-template-columns: 1fr; }
+      .detail-cell { border-right: none; border-bottom: 1px solid var(--rule); padding: 1.6rem; }
+      .detail-cell:last-child { border-bottom: none; }
+      .body-copy, .rsvp { padding: 2rem 1.6rem; }
+      .rsvp-form { grid-template-columns: 1fr; }
+      .rsvp-btn { grid-column: span 1; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.4rem 1.6rem; }
+      .footer-band { padding: 0.5rem 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- NAVY HEADER -->
+  <header class="header">
+    <div class="logo-wrap">
+      <img class="logo-icon" src="data:image/png;base64,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" alt="Nexops Icon" style="filter: brightness(0) invert(1);"/>
+      <div class="logo-text">
+        <span class="logo-wordmark">n e x o p s</span>
+        <span class="logo-sub">I N N O V A T I O N S</span>
+      </div>
+    </div>
+    <div class="invite-stamp">
+      <span class="invite-stamp-label">Access</span>
+      <span class="invite-stamp-value">By Invitation Only</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <span class="rule-short"></span>
+      You are cordially invited
+      <span class="rule-short"></span>
+    </div>
+    <h1 class="hero-title">LLAI</h1>
+    <p class="hero-subtitle">
+      A language bridge for Chin &amp; Burmese communities —<br>
+      built for business, education, and beyond.
+    </p>
+  </div>
+
+  <!-- ORNAMENT -->
+  <div class="ornament">
+    <span class="ornament-line"></span>
+    <span class="ornament-diamond"></span>
+    <span class="ornament-line"></span>
+  </div>
+
+  <!-- EVENT DETAILS -->
+  <div class="details">
+    <div class="detail-cell">
+      <div class="detail-label">Date</div>
+      <div class="detail-primary">February 20, 2026</div>
+      <div class="detail-secondary">8:30 PM — 9:30 PM</div>
+    </div>
+    <div class="detail-cell">
+      <div class="detail-label">Venue</div>
+      <div class="detail-primary">Chin Revival Church</div>
+      <div class="detail-secondary">Rev. S. Lian Hre's Library</div>
+    </div>
+    <div class="detail-cell">
+      <div class="detail-label">Presented By</div>
+      <div class="detail-primary">Nexops Innovations</div>
+      <div class="detail-secondary">LLAI Platform Launch</div>
+    </div>
+  </div>
+
+  <!-- BODY COPY -->
+  <div class="body-copy">
+    <p>
+      Nexops Innovations cordially requests your presence at the exclusive launch of
+      <strong>LLAI</strong>, our Large Language AI platform trained for Chin and Burmese with
+      <strong>98%+ accuracy</strong> — delivering intelligent tools for business operations,
+      education, and underserved communities.
+    </p>
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp">
+    <div class="rsvp-heading">Kindly Confirm Your Attendance</div>
+    <div class="rsvp-subheading">Seats are limited. Please RSVP at your earliest convenience.</div>
+
+    <div class="rsvp-form" id="rsvpForm">
+      <input type="text"  id="nameInput"  placeholder="Full Name"     autocomplete="off"/>
+      <input type="email" id="emailInput" placeholder="Email Address" autocomplete="off"/>
+
+      <!-- Plus One Toggle -->
+      <div class="plus-one-row">
+        <label class="plus-one-label">
+          <input type="checkbox" id="plusOneCheck" onchange="togglePlusOne()"/>
+          <span class="checkbox-custom"></span>
+          I will be bringing a guest <em>(+1)</em>
+        </label>
+      </div>
+
+      <!-- Plus One Name Field (hidden by default) -->
+      <div class="plus-one-field" id="plusOneField">
+        <input type="text" id="plusOneName" placeholder="Guest's Full Name" autocomplete="off"/>
+      </div>
+
+      <button class="rsvp-btn" onclick="submitRSVP()">Confirm Attendance</button>
+    </div>
+
+    <div id="rsvpSuccess">
+      <div class="success-check">✓</div>
+      <strong>Attendance Confirmed</strong>
+      <span>We look forward to welcoming you on February 20th.</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-l">Nexops Innovations · LLAI Platform · 2026</div>
+    <div class="footer-r">RSVP: <a href="mailto:rsvp@nexops.com">rsvp@nexops.com</a></div>
+  </footer>
+
+  <div class="footer-band">
+    <span class="footer-band-text">Nexops Innovations &nbsp;·&nbsp; Confidential &amp; By Invitation Only</span>
+  </div>
+
+</div>
+
+<script>
+  function togglePlusOne() {
+    const checked = document.getElementById('plusOneCheck').checked;
+    const field   = document.getElementById('plusOneField');
+    if (checked) {
+      field.classList.add('visible');
+      document.getElementById('plusOneName').focus();
+    } else {
+      field.classList.remove('visible');
+      document.getElementById('plusOneName').value = '';
+    }
+  }
+
+  function submitRSVP() {
+    const nameEl     = document.getElementById('nameInput');
+    const emailEl    = document.getElementById('emailInput');
+    const plusCheck  = document.getElementById('plusOneCheck').checked;
+    const plusNameEl = document.getElementById('plusOneName');
+
+    const name    = nameEl.value.trim();
+    const email   = emailEl.value.trim();
+    const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const plusName = plusNameEl.value.trim();
+
+    let ok = true;
+    [{ el: nameEl, valid: !!name }, { el: emailEl, valid: emailOK }].forEach(({ el, valid }) => {
+      if (!valid) {
+        el.style.borderColor = '#D9534F';
+        setTimeout(() => { el.style.borderColor = ''; }, 2200);
+        ok = false;
+      }
+    });
+
+    // Validate guest name if +1 is checked
+    if (plusCheck && !plusName) {
+      plusNameEl.style.borderColor = '#D9534F';
+      setTimeout(() => { plusNameEl.style.borderColor = ''; }, 2200);
+      ok = false;
+    }
+
+    if (!ok) return;
+
+    const guestLine = plusCheck
+      ? `\nGuest (+1): ${plusName}`
+      : '\nAttending: 1 person (no guest)';
+
+    const sub  = encodeURIComponent('RSVP — LLAI Launch · February 20, 2026');
+    const body = encodeURIComponent(
+      `Dear Nexops Innovations,\n\nI would like to confirm my attendance at the LLAI Launch Event.\n\nName: ${name}\nEmail: ${email}${guestLine}\n\nEvent Details:\nDate: February 20, 2026\nTime: 8:30 PM – 9:30 PM\nVenue: Chin Revival Church, Rev. S. Lian Hre's Library\n\nThank you.`
+    );
+    window.location.href = `mailto:rsvp@nexops.com?subject=${sub}&body=${body}`;
+
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('rsvpSuccess').style.display = 'block';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') submitRSVP(); });
+</script>
+
+</body>
+</html>
